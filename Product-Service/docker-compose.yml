@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo:4.4.19-rc0-focal
+    container_name: mongo
+    hostname: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - "./.data/db:/var/lib/mongodb"
+    environment:
+      MONGO_INITDB_DATABASE: product-DB
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      app_network:
+networks:
+  app_network:
